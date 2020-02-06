@@ -1,0 +1,48 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+{% block styles%}
+    <link rel="stylesheet" href="{% static 'css/list_user.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cadastrar_usuario.css' %}"> 
+{% endblock %}
+{% block title %}Listagem de usuarios{% endblock %}
+{% block conteudo %}
+<div class="container">
+  <div class="cadastro_title">
+    Usuario cadastrado no Sistema
+  </div>
+  <br>
+  <div class="panel">
+      <table class="table table-bordered">
+        <thead class="thead-light"> 
+          <tr>
+            <th>Funcionario</th> 
+            <th>Usuario</th> 
+            <th>Cargo</th>
+            <th>Ações</th>
+          </tr> 
+    </thead>
+    <tbody>
+      {% for info in user_list %}
+      <tr>
+        <td>
+          {{info.funcionario.name}}
+        </td>
+        <td>
+          {{info.username}}
+        </td> 
+        <td>
+          {{info.funcionario.cargo}}
+        </td> 
+        <td>
+          <a class="btn-opc" href="{% url 'accounts:editar-usuario' info.slug %}">Editar</a>
+          <a class="btn-opc" href="{% url 'accounts:deletar-usuario' info.slug %}">Apagar</a>
+        </td>
+      </tr>
+        {%endfor%} 
+    </tbody>
+      </table>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,182 @@
+{% extends 'accounts/base.html'%}
+{% load static%}
+{% load widget_tweaks%}
+<!-- <link rel="stylesheet" href="estilo/estilo.css"> -->
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/cadastrar_usuario.css'%}">
+{% endblock %}
+{% block title %}Cadastrar Funcionarios{% endblock %}
+{% block conteudo %}
+<div class="container">
+    <div class="panel">
+        <div>
+            <div class="cadastro_title">
+                <p>Cadastro de Funcionarios</p>
+            </div>
+            <br>
+        </div>
+        <div class="form">
+            <form method="POST" id="form-funcionario">
+                {% csrf_token %}
+                <div>
+                    <div>
+                        <div class="cadastro_subtitle">
+                            <br>
+                            <p>Dados do pessoais</p>
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Nome:</label>
+                            {% render_field form1.name class+="form-control"%}
+                        </div>
+                        <div class="col">
+                            <label>Data de nascimento:</label>
+                            {% render_field form1.date_of_birth class+="form-control"%}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Sexo:</label>
+                            {% render_field form1.sex class+="form-control"%}
+                        </div>
+                        <div class="col">
+                            <label>Filhos:</label>
+                            {% render_field form1.children class+="form-control"%}
+                        </div>
+                        <div class="col">
+                            <label>Quantidade de filhos:</label>
+                            {% render_field form1.amount_of_children class+="form-control"%}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Nome do pai:</label>
+                            {% render_field form1.fathers_name class+="form-control"%}
+                        </div>
+                        <div class="col">
+                            <label>Escolaridade</label>
+                            {% render_field form1.degree_of_institution class+="form-control"%}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Nome da mãe:</label>
+                            {% render_field form1.mothers_name class+="form-control"%}
+                        </div>
+                        <div class="col">
+                            <label>Cargo</label>
+                            {% render_field form1.cargo class+="form-control"%}
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <div>
+                        <div class="cadastro_subtitle">
+                            <br>
+                            <p>Dados de endereco</p>
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
+                        <label>Rua:</label>
+                        {% render_field form2.street class+="form-control"%}
+                    </div>
+                    <div class="col">
+                        <label>Numero:</label>
+                        {% render_field form2.number class+="form-control"%}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label>Complemento:</label>
+                        {% render_field form2.complement class+="form-control"%}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label>Bairro:</label>
+                        {% render_field form2.neighborhood class+="form-control"%}
+                    </div>
+                    <div class="col">
+                        <label>Cidade:</label>
+                        {% render_field form2.city class+="form-control"%}
+                    </div>
+                    <div class="col">
+                        <label>Estado:</label>
+                        {% render_field form2.state class+="form-control"%}
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <div>
+                        <div class="cadastro_subtitle">
+                            <br>
+                            <p>Documentação</p>
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label>Rg:</label>
+                        {% render_field form3.rg class+="form-control"%}
+                        {% render_field form3.rg.errors %}
+                    </div>
+                    <div class="col">
+                        <label>Data de expedição:</label>
+                        {% render_field form3.shipping_date class+="form-control"%}
+                        {% render_field form3.shipping_date.errors %}
+                    </div>
+                    <div class="col">
+                        <label>Orgão expeditor:</label>
+                        {% render_field form3.dispatching_agency class+="form-control"%}
+                        {% render_field form3.dispatching_agency.errors %}
+                        
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
+                        <label>Cpf:</label>
+                        {% render_field form4.cpf class+="form-control"%}
+                        {% render_field form4.cpf.errors %}
+                    </div>
+                    <div class="col">
+                        <label>Titulo de eleitor:</label>
+                        {% render_field form5.titulo_de_eleitor class+="form-control"%}
+                        {% render_field form5.titulo_de_eleitor.errors %}
+                    </div>
+                    <div class="col">
+                        <label>Zona:</label>
+                        {% render_field form5.zone class+="form-control"%}
+                        {% render_field form5.zone.errors %}
+                    </div>
+                </div>
+        </div>
+        <br>
+        <br>
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2"></div>
+            <div class="col-md-auto">
+                <button class="btn btn-primary" type="submit">Salvar</button>
+            </div>
+            <div class="col col-lg-2"></div>
+        </div>
+        <br>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock conteudo %}

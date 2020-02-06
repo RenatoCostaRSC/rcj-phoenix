@@ -1,0 +1,81 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+{% block styles%}
+    <link rel="stylesheet" href="{% static 'css/list_user.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cadastrar_usuario.css' %}"> 
+{% endblock %}
+{% block title %}Fila de Clientes{% endblock %}
+{% block conteudo %}
+<div class="container">
+  <div class="cadastro_title">
+    Fila
+  </div>
+  <br>
+  <div class="panel">
+      <table class="table table-bordered">
+        <thead class="thead-light"> 
+          <tr>
+            <th>Cliente</th> 
+            <th>Operador</th> 
+            <th>Supervisor</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr> 
+    </thead>
+    <tbody>
+      {% for info in fila %}
+      {% if info.info_auditoria.status_audutoria == 'PENDENTE'%}
+      <tr>
+        <td>
+          {{info.cliente.name}}
+        </td>
+        <td>
+          {{info.operador}}
+        </td> 
+        <td>
+          {{info.supervisor}}
+        </td> 
+        <td>
+          {{info.status_venda}}
+        </td> 
+        <td>
+          <a class="btn-opc" href="{% url 'core:tratar_cliente' info.cliente.slug info.id %}">Tratar cliente</a>
+        </td>
+      </tr>
+        {%endif%}
+        {%endfor%} 
+    </tbody>
+      </table>
+</div>
+</div>
+
+{% endblock %}
+
+
+
+<a href=>back to home</a><br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>CPF</th>
+      <th>Status Operador</th>
+      <th>Status Auditoria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <a href="{% url 'funcionarios:cadastro_funcionario'%}">add</a>
+    {% for b in fila %}
+    <tr>
+      <td>{{ b.cliente.name }}</td>
+      <td>{{ b.cliente.cpf }}</td>
+      <td>{{ b.status_venda }}</td>
+      <td>{{ b.info_auditoria.status_auditoria}}</td>
+      <td>
+        <a href="{% url 'core:tratar_cliente' b.cliente.slug b.id %}">editar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

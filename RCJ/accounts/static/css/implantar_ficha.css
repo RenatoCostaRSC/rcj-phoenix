@@ -1,0 +1,6 @@
+select[name="status_auditoria"] {
+    display: none;  
+}
+select[name="status_pos_venda"] {
+    display: none;  
+}

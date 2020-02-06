@@ -1,0 +1,99 @@
+{% extends "accounts/base.html"%}
+{% load static %}
+{% load widget_tweaks%}
+    <!-- <link rel="stylesheet" href="estilo/estilo.css"> -->
+    {% block styles%}
+    <link rel="stylesheet" href="{% static 'css/cadastrar_usuario.css'%}">
+    {% endblock %}
+    {% block title %}Cadastrar Usuarios{% endblock %}
+    {% block conteudo%}
+    <div class="container">
+        <div class="panel">
+            <div>
+                <div class="cadastro_title">
+                    <p>Cadastro de Usuarios</p>
+                </div>
+                <br>
+            </div>
+
+            <div class="form">
+                <form method="POST" id="form-usuario">
+                    {% csrf_token %}
+                    <div>
+                        <div>
+                            <div class="cadastro_subtitle">
+                                <br>
+                                <p>Dados do Usuario</p>
+                                <br>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>Funcionario:</label>
+                                {% render_field form.funcionario class+="form-control"%}
+                            </div>
+                            <div class="form-group col">
+                                <label>E-mail:</label>
+                                {% render_field form.email class+="form-control"%}
+                            </div>
+                            
+                        </div>
+                        <div class="form-row">
+                            <div class="col-auto">
+                                <label>Gestor:</label>
+                                {% render_field form.gestor class+="form-control"%}
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <div>
+                            <div class="cadastro_subtitle">
+                                <br>
+                                <p>Usuario e Senha</p>
+                                <br>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-3"></div>
+                        <div class="col-5">
+                            <div>
+                                <label>Usuario:</label>
+                                {% render_field form.username class+="form-control"%}
+                            </div>
+                            <div>
+                                <label>Senha:</label>
+                                {% render_field form.password1 class+="form-control"%}
+                            </div>
+                            <div>
+                                <label>Confirmação de senha:</label>
+                                {% render_field form.password2 class+="form-control"%}
+                            </div>
+                            <div>
+                                <label>Nivel de acesso:</label>
+                                {% render_field form.nivel class+="form-control"%}
+                            </div>
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+            </div>
+            <br>
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2"></div>
+                <div class="col-md-auto">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                </div>
+                <div class="col col-lg-2"></div>
+            </div>
+            <br>
+            </form>
+        </div>
+
+    </div>
+
+    </div>    
+{% endblock%}
